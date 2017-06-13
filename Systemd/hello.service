@@ -1,0 +1,14 @@
+[Unit]
+Description=Ruby on Rails bank app.
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Environment=RAILS_ENV=production
+WorkingDirectory=/var/www/apps/hello/current
+ExecStart=/bin/bash -lc 'bundle exec puma --config config/puma.rb >> log/production.log'
+TimeoutSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
